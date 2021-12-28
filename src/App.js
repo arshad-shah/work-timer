@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from 'react';
+import DateTime from './components/DateTime';
+import MainTimer from './components/MainTimer';
+import BreakTimer from './components/BreakTimer';
+import { Box, Switch, Typography } from '@mui/material';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [shouldStartBreakTimer, setShouldStartBreakTimer] = useState(false);
+	function start() {
+		setShouldStartBreakTimer(true);
+	}
+
+	function stop() {
+		setShouldStartBreakTimer(false);
+	}
+	return (
+		<Box
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				justifyContent: 'center',
+				height: '100vh',
+				width: '100vw',
+				backgroundColor: '#fafafa',
+			}}
+		>
+			<Typography variant="h1" color="primary">
+				Pomodoro Clock
+			</Typography>
+			<DateTime />
+			<MainTimer
+				shouldStartBreakTimer={shouldStartBreakTimer}
+				start={start}
+			/>
+			{shouldStartBreakTimer && (
+				<BreakTimer
+					shouldStartBreakTimer={shouldStartBreakTimer}
+					start={start}
+					stop={stop}
+				/>
+			)}
+		</Box>
+	);
 }
 
 export default App;
