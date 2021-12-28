@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DateTime from './components/DateTime';
 import MainTimer from './components/MainTimer';
 import BreakTimer from './components/BreakTimer';
-import { Box, Switch, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 function App() {
 	const [shouldStartBreakTimer, setShouldStartBreakTimer] = useState(false);
 	function start() {
@@ -12,6 +12,10 @@ function App() {
 	function stop() {
 		setShouldStartBreakTimer(false);
 	}
+	const colors = {
+		green: '#00e676',
+		red: '#ff1744',
+	};
 	return (
 		<Box
 			sx={{
@@ -21,11 +25,14 @@ function App() {
 				justifyContent: 'center',
 				height: '100vh',
 				width: '100vw',
-				backgroundColor: '#fafafa',
+				backgroundColor: shouldStartBreakTimer
+					? colors.red
+					: colors.green,
+				color: '#3b3b3b',
 			}}
 		>
 			<Typography variant="h1" color="primary">
-				Pomodoro Clock
+				Work Clock
 			</Typography>
 			<DateTime />
 			<MainTimer
