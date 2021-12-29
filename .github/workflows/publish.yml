@@ -25,13 +25,13 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - name: Install dependencies
-              run: yarn install
+              run: npm install
 
             - name: Run the tests
-              run: yarn test --coverage
+              run: npm test --coverage
 
             - name: Build project
-              run: yarn run build
+              run: npm run build
 
             - name: publish to build
               uses: s0/git-publish-subdir-action@develop
