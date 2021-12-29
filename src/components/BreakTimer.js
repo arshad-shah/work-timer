@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react';
-import { Box, Button, IconButton, Typography } from '@mui/material';
+import {
+	Box,
+	Button,
+	ButtonGroup,
+	IconButton,
+	Input,
+	TextField,
+	Typography,
+} from '@mui/material';
 import { useState } from 'react';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
@@ -71,7 +79,7 @@ function BreakTimer({ shouldStartBreakTimer, start, stop }) {
 				justifyContent: 'center',
 			}}
 		>
-			<Typography variant="h1" color="primary">
+			<Typography variant="h1">
 				{min} : {time}
 			</Typography>
 
@@ -82,7 +90,6 @@ function BreakTimer({ shouldStartBreakTimer, start, stop }) {
 					alignItems: 'center',
 					justifyContent: 'center',
 					width: '100%',
-					marginTop: '1rem',
 				}}
 			>
 				<Button variant="contained" color="primary" onClick={startStop}>
@@ -97,47 +104,26 @@ function BreakTimer({ shouldStartBreakTimer, start, stop }) {
 					display: 'flex',
 					flexDirection: 'row',
 					alignItems: 'center',
+					alignContent: 'center',
 					justifyContent: 'center',
 					width: '100%',
-					marginTop: '1rem',
 				}}
 			>
-				<Typography
-					sx={{
-						marginRight: '1rem',
-						padding: '0.5rem',
-					}}
-					variant="h3"
-					color="primary"
-				>
-					{breakTime}
-				</Typography>
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						justifyContent: 'center',
-						marginTop: '1rem',
-					}}
-				>
-					<IconButton
-						size="large"
-						variant="outlined"
-						color="secondary"
-						onClick={breakIncrement}
-					>
+				<TextField
+					id="outlined-basic"
+					label="Break Time"
+					variant="outlined"
+					value={breakTime}
+					onChange={e => setBreakTime(e.target.value)}
+				/>
+				<ButtonGroup orientation="vertical">
+					<IconButton size="large" onClick={breakIncrement}>
 						<KeyboardArrowUpRoundedIcon fontSize="inherit" />
 					</IconButton>
-					<IconButton
-						size="large"
-						variant="outlined"
-						color="secondary"
-						onClick={breakDecrement}
-					>
+					<IconButton size="large" onClick={breakDecrement}>
 						<KeyboardArrowDownRoundedIcon fontSize="inherit" />
 					</IconButton>
-				</Box>
+				</ButtonGroup>
 			</Box>
 		</Box>
 	);

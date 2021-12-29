@@ -28,18 +28,19 @@ function App() {
 				backgroundColor: shouldStartBreakTimer
 					? colors.red
 					: colors.green,
-				color: '#3b3b3b',
+				color: shouldStartBreakTimer ? '#ffffff' : '#000000',
 			}}
 		>
-			<Typography variant="h1" color="primary">
-				Work Clock
+			<Typography variant="h1">
+				{shouldStartBreakTimer ? 'Break' : 'Work'}
 			</Typography>
 			<DateTime />
-			<MainTimer
-				shouldStartBreakTimer={shouldStartBreakTimer}
-				start={start}
-			/>
-			{shouldStartBreakTimer && (
+			{!shouldStartBreakTimer ? (
+				<MainTimer
+					shouldStartBreakTimer={shouldStartBreakTimer}
+					start={start}
+				/>
+			) : (
 				<BreakTimer
 					shouldStartBreakTimer={shouldStartBreakTimer}
 					start={start}
