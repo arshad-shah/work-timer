@@ -1,4 +1,5 @@
-import { Alert, Box, Button, Typography } from '@mui/material';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Box, Button, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 function MainTimer({ shouldStartBreakTimer, start }) {
