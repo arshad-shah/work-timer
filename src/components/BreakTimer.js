@@ -1,7 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import { useState } from 'react';
-import InputField from './InputField';
 
 function BreakTimer({ shouldStartBreakTimer, breakTime, start, stop }) {
 	const [time, setTime] = useState(0);
