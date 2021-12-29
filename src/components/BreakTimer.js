@@ -1,22 +1,12 @@
 import React, { useEffect } from 'react';
-import {
-	Box,
-	Button,
-	ButtonGroup,
-	IconButton,
-	Input,
-	TextField,
-	Typography,
-} from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { useState } from 'react';
-import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
-import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
+import InputField from './InputField';
 
-function BreakTimer({ shouldStartBreakTimer, start, stop }) {
+function BreakTimer({ shouldStartBreakTimer, breakTime, start, stop }) {
 	const [time, setTime] = useState(0);
 	const [timer, setTimer] = useState(shouldStartBreakTimer);
 	const [min, setMin] = useState(0);
-	const [breakTime, setBreakTime] = useState(15);
 
 	useEffect(() => {
 		if (timer) {
@@ -59,17 +49,6 @@ function BreakTimer({ shouldStartBreakTimer, start, stop }) {
 		setTime(0);
 		setMin(0);
 	}
-
-	function breakDecrement() {
-		if (breakTime > 1) {
-			setBreakTime(breakTime => breakTime - 1);
-		}
-	}
-
-	function breakIncrement() {
-		setBreakTime(breakTime => breakTime + 1);
-	}
-
 	return (
 		<Box
 			sx={{
@@ -98,32 +77,6 @@ function BreakTimer({ shouldStartBreakTimer, start, stop }) {
 				<Button variant="contained" color="secondary" onClick={reset}>
 					reset
 				</Button>
-			</Box>
-			<Box
-				sx={{
-					display: 'flex',
-					flexDirection: 'row',
-					alignItems: 'center',
-					alignContent: 'center',
-					justifyContent: 'center',
-					width: '100%',
-				}}
-			>
-				<TextField
-					id="outlined-basic"
-					label="Break Time"
-					variant="outlined"
-					value={breakTime}
-					onChange={e => setBreakTime(e.target.value)}
-				/>
-				<ButtonGroup orientation="vertical">
-					<IconButton size="large" onClick={breakIncrement}>
-						<KeyboardArrowUpRoundedIcon fontSize="inherit" />
-					</IconButton>
-					<IconButton size="large" onClick={breakDecrement}>
-						<KeyboardArrowDownRoundedIcon fontSize="inherit" />
-					</IconButton>
-				</ButtonGroup>
 			</Box>
 		</Box>
 	);
