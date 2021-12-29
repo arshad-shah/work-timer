@@ -1,7 +1,7 @@
 {
 	"name": "work-timer",
 	"version": "0.1.0",
-	"homepage": "https://timer.arshadshah.com/timer",
+	"homepage": "https://timer.arshadshah.com",
 	"description": "A timer to help you work",
 	"main": "index.js",
 	"dependencies": {
